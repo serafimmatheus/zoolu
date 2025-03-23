@@ -20,9 +20,16 @@ import {
   TabsTrigger,
 } from "@/app/_components/ui/tabs";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@clerk/nextjs";
 
 const Register = () => {
+  const { userId } = useAuth();
   const navigate = useRouter().push;
+
+  if (userId) {
+    navigate("/dashboard");
+    return null;
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

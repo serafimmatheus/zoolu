@@ -15,9 +15,16 @@ import { Label } from "@/app/_components/ui/label";
 import { Checkbox } from "@/app/_components/ui/checkbox";
 import { BlurContainer } from "@/app/_components/ui/BlurContainer";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@clerk/nextjs";
 
 const Login = () => {
+  const { userId } = useAuth();
   const navigate = useRouter().push;
+
+  if (userId) {
+    navigate("/dashboard");
+    return null;
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
