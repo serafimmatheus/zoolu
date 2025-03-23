@@ -15,7 +15,7 @@ import { Label } from "@/app/_components/ui/label";
 import { Checkbox } from "@/app/_components/ui/checkbox";
 import { BlurContainer } from "@/app/_components/ui/BlurContainer";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@clerk/nextjs";
+import { SignInButton, useAuth } from "@clerk/nextjs";
 
 const Login = () => {
   const { userId } = useAuth();
@@ -87,6 +87,10 @@ const Login = () => {
               </div>
               <div className="relative flex justify-center text-xs uppercase">
                 <span className="bg-card px-2 text-muted-foreground">Ou</span>
+              </div>
+
+              <div className="relative flex justify-center text-xs uppercase">
+                <SignInButton />
               </div>
             </div>
             <div className="text-center text-sm text-muted-foreground">

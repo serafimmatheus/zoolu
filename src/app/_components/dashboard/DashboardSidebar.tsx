@@ -21,14 +21,14 @@ import {
   FileText,
   Settings,
   DollarSign,
-  LogOut,
 } from "lucide-react";
 import Link from "next/link";
+import { UserButton } from "@clerk/nextjs";
+import { usePathname } from "next/navigation";
 
 export const DashboardSidebar = () => {
-  const { pathname } = location;
+  const pathname = usePathname();
 
-  // List of menu items
   const menuItems = [
     {
       title: "Visão Geral",
@@ -119,13 +119,8 @@ export const DashboardSidebar = () => {
 
       <SidebarFooter>
         <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Link href="/login">
-                <LogOut className="h-4 w-4" />
-                <span>Sair</span>
-              </Link>
-            </SidebarMenuButton>
+          <SidebarMenuItem className="text-center">
+            <UserButton showName />
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
